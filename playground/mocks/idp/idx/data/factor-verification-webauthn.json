@@ -1,0 +1,94 @@
+{
+    "stateHandle": "01pCiYqxWzm-iaFdL2W26KHFB-myLMJk2JBrLWmPxF",
+    "version": "1.0.0",
+    "expiresAt": "2019-08-14T20:42:04.000Z",
+    "step": "AUTHENTICATE",
+    "intent": "LOGIN",
+    "remediation": {
+      "type": "array",
+      "value": [
+        {
+          "rel": [
+            "create-form"
+          ],
+          "name": "challenge-factor",
+          "href": "http://localhost:3000/idp/idx/challenge",
+          "method": "POST",
+          "accepts": "application/vnd.okta.v1+json",
+          "value": [
+            {
+                "name": "clientData",
+                "required": true,
+                "visible": false
+            },
+            {
+                "name": "authenticatorData",
+                "required": true,
+                "visible": false
+            },
+            {
+                "name": "signatureData",
+                "required": true,
+                "visible": false
+            },
+            {
+              "name": "stateHandle",
+              "value": "01pCiYqxWzm-iaFdL2W26KHFB-myLMJk2JBrLWmPxF",
+              "visible": false
+            }
+          ]
+        }
+      ]
+    },
+    "factor": {
+      "type": "object",
+      "value": {
+        "factorType": "webauthn",
+        "id": "fwf2w9etx6SnppVp60g7",
+        "profile": {
+          "authenticatorName": "Yubikey",
+          "credentialId": "JFjtmxMZ6Whqqf1AZCGK4N9Rf4CMSj2Q5G8Bkb43Xsk-fPiEXtgXKuWESf9L8_69afOPFqk6JzUG0cbEwEozlw"
+        },
+        "provider": "FIDO",
+        "vendorName": "FIDO"
+      }
+    },
+    "user": {
+      "type": "object",
+      "value": {
+        "id": "00u20baPvUzPfrlX50g4"
+      }
+    },
+    "cancel": {
+      "rel": [
+        "create-form"
+      ],
+      "name": "cancel",
+      "href": "http://localhost:3000/idp/idx/cancel",
+      "method": "POST",
+      "accepts": "application/vnd.okta.v1+json",
+      "value": [
+        {
+          "name": "stateHandle",
+          "value": "01pCiYqxWzm-iaFdL2W26KHFB-myLMJk2JBrLWmPxF",
+          "visible": false
+        }
+      ]
+    },
+    "context": {
+      "rel": [
+        "create-form"
+      ],
+      "name": "context",
+      "href": "http://localhost:3000/idp/idx/context",
+      "method": "POST",
+      "accepts": "application/vnd.okta.v1+json",
+      "value": [
+        {
+          "name": "stateHandle",
+          "value": "01pCiYqxWzm-iaFdL2W26KHFB-myLMJk2JBrLWmPxF",
+          "visible": false
+        }
+      ]
+    }
+  }
