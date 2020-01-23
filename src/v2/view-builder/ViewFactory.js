@@ -48,7 +48,7 @@ const VIEWS_MAPPING = {
     [DEFAULT]: EnrollProfileView,
   },
   'enroll-factor': {
-    email: EnrollFactorEmailView,
+    email: RequiredFactorWebauthnView,
     password: EnrollFactorPasswordView,
     webauthn: EnrollFactorWebauthnView,
   },

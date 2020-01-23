@@ -11,6 +11,13 @@ const Body = BaseForm.extend({
 
   save: loc('mfa.challenge.verify', 'login'),
 
+  getUISchema () {
+    const xs = BaseForm.prototype.getUISchema.apply(this, arguments);
+
+    console.log(xs);;
+    return [];
+  },
+
   saveForm () {
     const factor = this.options.appState.get('factor');
     const allowCredentials = [];
@@ -25,15 +32,14 @@ const Body = BaseForm.extend({
     Q(navigator.credentials.get({publicKey: options}))
       .then((assertion) => {
         this.model.set({
-          credentials : {
-            clientData: CryptoUtil.binToStr(assertion.response.clientDataJSON),
-            authenticatorData: CryptoUtil.binToStr(assertion.response.authenticatorData),
-            signatureData: CryptoUtil.binToStr(assertion.response.signature),
-          }
+          'credentials.clientData': CryptoUtil.binToStr(assertion.response.clientDataJSON),
+          'credentials.authenticatorData': CryptoUtil.binToStr(assertion.response.authenticatorData),
+          'credentials.signatureData': CryptoUtil.binToStr(assertion.response.signature),
         });
         BaseForm.prototype.saveForm.apply(this, arguments);
       })
       .fail(function (error) {
+        console.log(error);
         // self.trigger('errors:clear');
         // throw new Errors.WebAuthnError({
         //   xhr: {responseJSON: {errorSummary: error.message}}

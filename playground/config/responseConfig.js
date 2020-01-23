@@ -2,7 +2,9 @@ module.exports = {
   mocks: {
     // ===== IDX
 
-    '/idp/idx/introspect': ['identify'],
+    '/idp/idx/introspect': [
+      'factor-verification-webauthn',
+    ],
     '/idp/idx': ['select-factor-authenticate'],
     '/idp/idx/enroll': ['enroll-profile'],
     '/idp/idx/challenge/answer': [
